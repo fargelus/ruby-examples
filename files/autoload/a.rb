@@ -7,9 +7,10 @@ module A
   B
   p autoload? :B
 
-  # Всегда nil
+  # Always nil
   p 'autoload? :C - ' + autoload?(:C).to_s
 
+  # :B
   p 'constants: ' + constants.join(' ')
 end
 
