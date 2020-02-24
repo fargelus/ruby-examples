@@ -16,8 +16,4 @@ class ReportFactory
       raise Exception.new "Unsupport report type: #{type}"
     end
   end
-
-  def extend_class(class_name, format)
-
-  end
 end
