@@ -1,23 +1,24 @@
 require_relative 'cost_stats'
 require_relative 'capacity_stats'
 require_relative 'volumes_amount_stats'
+require_relative 'volumes_capacity_stats'
 
 class StatsFactory
-  TYPES = %i[expensive cheap capacity volumes_amount volumes_capacity]
+  TYPES_TO_STATS = {
+    cheap: CostStats,
+    expensive: CostStats,
+    capacity: CapacityStats,
+    volumes_amount: VolumesAmountStats,
+    volumes_capacity: VolumesCapacityStats
+  }
+
   private_methods :new
 
   def self.produce(type)
-    case type
-    when :expensive, :cheap
-      cost_stats = CostStats.new
-      cost_stats.reverse_order if type == :expensive
-      cost_stats
-    when :capacity
-      CapacityStats.new
-    when :volumes_amount
-      VolumesAmountStats.new
-    else
-      raise Exception.new "Unsupport report type: #{type}"
-    end
+    stats_class = TYPES_TO_STATS[type]
+    raise Exception.new "Unsupport report type: #{type}" unless stats_class
+    stats_obj = stats_class.new
+    stats_obj.reverse_order if type == :expensive
+    stats_obj
   end
 end
