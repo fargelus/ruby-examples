@@ -1,7 +1,9 @@
-require_relative 'lib/cost_stats'
+require_relative 'cost_stats'
+require_relative 'capacity_stats'
+require_relative 'volumes_amount_stats'
 
 class StatsFactory
-  TYPES = %i[expensive cheap capacity hdd_amount hdd_volume]
+  TYPES = %i[expensive cheap capacity volumes_amount volumes_capacity]
   private_methods :new
 
   def self.produce(type)
@@ -10,6 +12,10 @@ class StatsFactory
       cost_stats = CostStats.new
       cost_stats.reverse_order if type == :expensive
       cost_stats
+    when :capacity
+      CapacityStats.new
+    when :hdd_amount
+      VolumesAmountStats.new
     else
       raise Exception.new "Unsupport report type: #{type}"
     end

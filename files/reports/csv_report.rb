@@ -31,4 +31,18 @@ module CSVReport
     end
     prices
   end
+
+  def parse_volumes
+    volumes = []
+    CSV.foreach(FILES[:volumes]) do |vol|
+      volumes << volume_hash_for(vol)
+    end
+    volumes
+  end
+
+  def volume_hash_for(vol)
+    volume = {}
+    volume[:vm_id], volume[:hdd_type], volume[:hdd_capacity] = vol
+    volume
+  end
 end

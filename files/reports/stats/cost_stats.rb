@@ -1,9 +1,9 @@
-class CostStats
-  attr_reader :data
+require_relative 'base_stats'
 
+class CostStats < BaseStats
   def initialize
+    super
     @order = :asc
-    @data = []
   end
 
   def reverse_order
@@ -15,7 +15,7 @@ class CostStats
     @prices = parse_prices
     calc_cost
     sort_by_order
-    @data = @vms.take(count.to_i)
+    @data = @vms.take(count)
   end
 
   private

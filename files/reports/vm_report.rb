@@ -1,4 +1,4 @@
-require_relative 'stats_factory'
+require_relative 'stats/stats_factory'
 require_relative 'csv_report'
 require_relative 'report_printer'
 
@@ -9,7 +9,7 @@ class VMReport
 
   def buildFromCSV(count)
     @stats.extend(CSVReport)
-    @stats.collect(count)
+    @stats.collect(count.to_i)
     ReportPrinter.call(@stats)
   end
 end
