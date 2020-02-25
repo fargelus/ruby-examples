@@ -7,7 +7,7 @@ class VMReport
     @stats = StatsFactory.produce(type.to_sym)
   end
 
-  def buildFromCSV(count)
+  def build_from_csv(count)
     @stats.extend(CSVReport)
     @stats.collect(count.to_i)
     ReportPrinter.call(@stats)

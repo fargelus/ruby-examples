@@ -7,10 +7,10 @@ class CapacityStats < BaseStats
     @param = STDIN.gets.chomp.downcase.to_sym
   end
 
-  def collect(n)
+  def collect(count)
     @vms = parse_vms
     check_param
-    @data = @vms.max_by(n) { |vm| vm[@param] }
+    @data = @vms.max_by(count) { |vm| vm[@param] }
   end
 
   private

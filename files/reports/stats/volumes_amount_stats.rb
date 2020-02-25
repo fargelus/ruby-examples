@@ -6,15 +6,15 @@ class VolumesAmountStats < BaseStats
     @type = 'sata'
   end
 
-  def collect(n)
+  def collect(count)
     prepare_volumes_data
     calc_volumes_amount
     sort_volumes_amount
-    cut_volumes_amount(n)
+    cut_volumes_amount(count)
     @volumes_amount.each_pair do |id, amount|
-      vol = @volumes.find { |vol| vol[:vm_id] == id }
-      vol[:amount] = amount
-      @data << vol
+      target = @volumes.find { |vol| vol[:vm_id] == id }
+      target[:amount] = amount
+      @data << target
     end
   end
 
