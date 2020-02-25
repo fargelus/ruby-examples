@@ -14,7 +14,7 @@ class StatsFactory
       cost_stats
     when :capacity
       CapacityStats.new
-    when :hdd_amount
+    when :volumes_amount
       VolumesAmountStats.new
     else
       raise Exception.new "Unsupport report type: #{type}"

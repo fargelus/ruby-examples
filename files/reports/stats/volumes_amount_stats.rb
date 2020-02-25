@@ -35,8 +35,7 @@ class VolumesAmountStats < BaseStats
   end
 
   def sort_volumes_amount
-    sorted = @volumes_amount.sort_by(&:last).reverse.to_h
-    @volumes_amount = sorted
+    @volumes_amount = @volumes_amount.sort_by(&:last).reverse.to_h
   end
 
   def cut_volumes_amount(n)
