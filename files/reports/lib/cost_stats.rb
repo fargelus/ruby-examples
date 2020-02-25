@@ -1,19 +1,21 @@
-class CostReport
+class CostStats
+  attr_reader :data
+
   def initialize
     @order = :asc
+    @data = []
   end
 
-  def order=(ord)
-    return unless %i[asc desc].include? ord
-    @order = ord
+  def reverse_order
+    @order = :desc
   end
 
-  def build(count)
+  def collect(count)
     @vms = parse_vms
     @prices = parse_prices
     calc_cost
     sort_by_order
-    @vms.take(count.to_i)
+    @data = @vms.take(count.to_i)
   end
 
   private

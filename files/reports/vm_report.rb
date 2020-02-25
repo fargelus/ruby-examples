@@ -1,10 +1,15 @@
-require_relative 'report_factory'
+require_relative 'stats_factory'
 require_relative 'csv_report'
+require_relative 'report_printer'
 
 class VMReport
-  def self.buildFromCSV(type, count)
-    report = ReportFactory.create(type)
-    report.extend(CSVReport)
-    report.build(count)
+  def initialize(type)
+    @stats = StatsFactory.produce(type.to_sym)
+  end
+
+  def buildFromCSV(count)
+    @stats.extend(CSVReport)
+    @stats.collect(count)
+    ReportPrinter.call(@stats)
   end
 end
