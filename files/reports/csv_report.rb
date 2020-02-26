@@ -43,6 +43,7 @@ module CSVReport
   def volume_hash_for(vol)
     volume = {}
     volume[:vm_id], volume[:hdd_type], volume[:hdd_capacity] = vol
+    volume[:hdd_capacity] = volume[:hdd_capacity].to_i
     volume
   end
 end
