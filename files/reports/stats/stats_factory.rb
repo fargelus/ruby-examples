@@ -4,6 +4,8 @@ require_relative 'volumes_amount_stats'
 require_relative 'volumes_capacity_stats'
 
 class StatsFactory
+  private_methods :new
+  
   TYPES_TO_STATS = {
     cheap: CostStats,
     expensive: CostStats,
@@ -11,8 +13,6 @@ class StatsFactory
     volumes_amount: VolumesAmountStats,
     volumes_capacity: VolumesCapacityStats
   }
-
-  private_methods :new
 
   def self.produce(type)
     stats_class = TYPES_TO_STATS[type]
