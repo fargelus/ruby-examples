@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'csv'
 
 module CSVReport
@@ -5,8 +7,8 @@ module CSVReport
   FILES = {
     prices: "#{BASE_PATH}prices.csv",
     vms: "#{BASE_PATH}vms.csv",
-    volumes: "#{BASE_PATH}volumes.csv",
-  }
+    volumes: "#{BASE_PATH}volumes.csv"
+  }.freeze
 
   def parse_vms
     vms = []
@@ -19,8 +21,11 @@ module CSVReport
   def vm_hash_for(raw_data)
     vm = {}
     id, cpu, ram, hdd_type, hdd_capacity = raw_data
-    vm[:id], vm[:cpu], vm[:ram] = id, cpu, ram
-    vm[:hdd_type], vm[:hdd_capacity] = hdd_type, hdd_capacity
+    vm[:id] = id
+    vm[:cpu] = cpu
+    vm[:ram] = ram
+    vm[:hdd_type] = hdd_type
+    vm[:hdd_capacity] = hdd_capacity
     vm.each { |k, v| vm[k] = v.to_i if /[0-9]+/ =~ v }
   end
 

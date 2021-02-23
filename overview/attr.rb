@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 class Friend
   attr_accessor :name
 
   @@common = 'Andrew'
 
   def initialize(name, phone)
-    @name, @phone = name, phone
+    @name = name
+    @phone = phone
   end
 
   def hello
@@ -15,7 +18,6 @@ class Friend
     puts "Our commom friend is #{@@common}"
   end
 end
-
 
 susan = Friend.new('Susan', '+7081231')
 john = Friend.new('John', '+790124151')

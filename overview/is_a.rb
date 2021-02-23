@@ -1,10 +1,8 @@
+# frozen_string_literal: true
+
 class Dog end
 
 rover = Dog.new
-if rover.is_a? Dog
-  puts 'Rover is a Dog'
-end
+puts 'Rover is a Dog' if rover.is_a? Dog
 
-if rover.kind_of? Dog
-  puts 'Rover is some kind of Dog'
-end
+puts 'Rover is some kind of Dog' if rover.is_a? Dog

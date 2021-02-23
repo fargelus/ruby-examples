@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'socket'
 require 'uri'
 require 'cgi'
@@ -34,6 +36,6 @@ class Server
   def receive_params
     url = @request.split(' ')[1]
     query = URI(url).query
-    CGI::parse(query).transform_values(&:first) if query
+    CGI.parse(query).transform_values(&:first) if query
   end
 end

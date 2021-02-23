@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 autoload(:C, './c.rb')
 
 module A

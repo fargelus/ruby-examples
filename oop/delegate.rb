@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'delegate'
 
 class MyQueue < DelegateClass(Array)
-  def initialize(arg=[])
+  def initialize(arg = [])
     super(arg)
   end
 
-  alias_method :enqueue, :push
-  alias_method :dequeue, :shift
+  alias enqueue push
+  alias dequeue shift
 end
 
 mq = MyQueue.new

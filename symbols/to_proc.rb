@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Symbol
   def to_proc
     proc { |x, *args| x.send(self, *args) }

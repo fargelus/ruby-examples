@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 print 'Chars: '
 str = 'ABC'
 str.each_char { |char| print char, ' ' }
@@ -8,6 +10,6 @@ str.each_byte { |byte| print byte, ' ' }
 puts
 
 puts '***** Matching *****'
-str = %q/I'm a leaf on the wind/
+str = "I'm a leaf on the wind"
 str.scan(/[a-z]+/i).each { |x| print x, ' ' }
 puts

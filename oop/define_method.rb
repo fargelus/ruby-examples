@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MyClass
   define_method(:body_method) { puts 'Class body' }
 

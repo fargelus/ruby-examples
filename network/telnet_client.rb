@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'socket'
 
 host, port = ARGV
@@ -9,7 +11,8 @@ begin
   s = TCPSocket.open(host, port)
   STDOUT.puts 'Done'
 
-  local, peer = s.addr, s.peeraddr
+  local = s.addr
+  peer = s.peeraddr
   STDOUT.print "Connected to #{peer[2]}:#{peer[1]}"
   STDOUT.puts " use local port #{local[1]}"
 
@@ -25,7 +28,7 @@ begin
     STDOUT.print '> '
     STDOUT.flush
     local = STDIN.gets
-    break if !local
+    break unless local
 
     s.puts local
     s.flush
@@ -33,8 +36,8 @@ begin
     response = s.readpartial(4096)
     puts response.chop
   end
-rescue
-  puts $!
+rescue StandardError
+  puts $ERROR_INFO
 ensure
-  s.close if s
+  s&.close
 end

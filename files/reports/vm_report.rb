@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'stats/stats_factory'
 require_relative 'csv_report'
 require_relative 'report_printer'

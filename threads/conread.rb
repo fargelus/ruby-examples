@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'open-uri'
 require 'yaml'
 
@@ -6,15 +8,15 @@ def conread(filenames)
 
   filenames.each do |f|
     h[f] = Thread.new do
-      open(f) { |f| f.read }
+      open(f, &:read)
     end
   end
 
   h.each_pair do |fn, thread|
     begin
       h[fn] = thread.value
-    rescue
-      h[fn] = $!
+    rescue StandardError
+      h[fn] = $ERROR_INFO
     end
   end
 

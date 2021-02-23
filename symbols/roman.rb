@@ -1,19 +1,30 @@
+# frozen_string_literal: true
+
 class Roman
   include Comparable
 
-  I, IV, V, IX, X, XL, L, XC, C, CD, D, CM, M =
-    1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000
+  I = 1
+  IV = 4
+  V = 5
+  IX = 9
+  X = 10
+  XL = 40
+  L = 50
+  XC = 90
+  C = 100
+  CD = 400
+  D = 500
+  CM = 900
+  M = 1000
 
-  Values = %w[M CM D CD C C XC L XL X IX V IV I]
+  Values = %w[M CM D CD C C XC L XL X IX V IV I].freeze
 
   def self.encode(value)
     return '' if value == 0
 
     Values.each do |letters|
       rnum = const_get(letters)
-      if value >= rnum
-        return letters + '' + encode(value - rnum)
-      end
+      return letters + '' + encode(value - rnum) if value >= rnum
     end
   end
 
@@ -22,7 +33,11 @@ class Roman
     letters = rvalue.split('')
     letters.each_with_index do |letter, i|
       this = const_get(letter)
-      that = const_get(letters[i + 1]) rescue 0
+      that = begin
+               const_get(letters[i + 1])
+             rescue StandardError
+               0
+             end
       op = that > this ? :- : :+
       sum = sum.send(op, this)
     end
@@ -32,12 +47,12 @@ class Roman
 
   def initialize(value)
     case value
-      when Numeric
-        @decimal = value
-        @roman = Roman.encode(@decimal)
-      when String
-        @roman = value
-        @decimal = Roman.decode(value)
+    when Numeric
+      @decimal = value
+      @roman = Roman.encode(@decimal)
+    when String
+      @roman = value
+      @decimal = Roman.decode(value)
     end
   end
 
@@ -50,7 +65,7 @@ class Roman
   end
 
   def <=>(other)
-    self.to_i <=> other.to_i
+    to_i <=> other.to_i
   end
 end
 

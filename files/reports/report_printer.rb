@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReportPrinter
   def initialize(data)
     @data = data

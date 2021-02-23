@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 str = 'hello'
 str << ' world!'
 puts str
@@ -16,7 +18,7 @@ puts str.start_with? 'hell'
 puts str.end_with? 'orld'
 puts str.include? 'wor'
 puts str =~ /[aeiou]{2}/
-puts str.match(/[aeiou]/) { |m| m.to_s }
+puts str.match(/[aeiou]/, &:to_s)
 p str.split
 puts
 
@@ -55,4 +57,4 @@ puts 'hello'.count('l')
 puts 'hello'.delete('l')
 puts
 
-puts "%s: in '%s' line %d" % ['Syntax error', 'test.rb', 20]
+puts format("%s: in '%s' line %d", 'Syntax error', 'test.rb', 20)

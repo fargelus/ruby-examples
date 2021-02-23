@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def sum(a, b, *c)
   summa = a + b
   c.each do |x|

@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'forwardable'
 
 class MyQueue
   extend Forwardable
 
-  def initialize(obj=[])
+  def initialize(obj = [])
     @queue = obj
   end
 

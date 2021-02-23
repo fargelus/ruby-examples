@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 str = 'hello'
 
 class << str
   def hyphen
-    self.split('').join('-')
+    split('').join('-')
   end
 end
 

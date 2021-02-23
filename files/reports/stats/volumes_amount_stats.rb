@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'volumes_base_stats'
 
 class VolumesAmountStats < VolumesBaseStats

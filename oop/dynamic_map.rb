@@ -1,8 +1,12 @@
+# frozen_string_literal: true
+
 class Person
   attr_reader :name, :age, :height
 
   def initialize(name, age, height)
-    @name, @age, @height = name, age, height
+    @name = name
+    @age = age
+    @height = height
   end
 
   def inspect
@@ -10,13 +14,11 @@ class Person
   end
 end
 
-
 class Array
   def map_by(sym)
-    self.map { |x| x.send(sym) }
+    map { |x| x.send(sym) }
   end
 end
-
 
 people = []
 people << Person.new('Hansel', 35, 69)

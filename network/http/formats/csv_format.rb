@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'csv'
 require 'pathname'
 
 module CSVFormat
   BASE_PATH = Pathname.new(__FILE__).join('../../data/csv/')
   FILES = {
-    prices: "#{BASE_PATH}prices.csv",
-  }
+    prices: "#{BASE_PATH}prices.csv"
+  }.freeze
 
   def parse_prices
     prices = {}

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 n = 0
 thrs = []
 while n < 3

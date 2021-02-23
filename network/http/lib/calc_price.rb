@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../formats/csv_format'
 
 class CalcPrice
@@ -43,6 +45,6 @@ class CalcPrice
         disks[type] = 0 unless disks.key? type
       end
     end
-    @params.merge!(disks) { |key, old, new| old.to_i + new.to_i }
+    @params.merge!(disks) { |_key, old, new| old.to_i + new.to_i }
   end
 end

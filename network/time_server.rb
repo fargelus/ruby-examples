@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'socket'
 
 server = TCPServer.open(2000)
