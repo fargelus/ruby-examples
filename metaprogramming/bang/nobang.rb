@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Module
   def make_nobang(*methods)
     methods.each do |method|
-      define_method("#{method}") do |*args, &block|
-        self.dup.send("#{method}!", *args, &block)
+      define_method(method.to_s) do |*args, &block|
+        dup.send("#{method}!", *args, &block)
       end
     end
   end
@@ -10,7 +12,7 @@ end
 
 class String
   def down!
-    self.downcase!
+    downcase!
   end
 
   make_nobang :down
